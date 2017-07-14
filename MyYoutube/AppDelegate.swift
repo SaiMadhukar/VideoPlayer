@@ -8,17 +8,102 @@
 
 import UIKit
 import CoreData
+import  Firebase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
 
+    let home = TabBarController()
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        FirebaseApp.configure()
+        
+        
+        
+
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.translatesAutoresizingMaskIntoConstraints = false
+        window?.makeKeyAndVisible()
+        let nav = UINavigationController(rootViewController: home)
+        nav.hidesBarsOnSwipe = true
+        window?.rootViewController = nav
+        nav.navigationBar.barTintColor = UIColor.red
+        nav.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : UIColor.white
+        ]
+        let first = HomeController()
+        home.viewControllers = [first,
+                                TrendingController(),
+                                SubscriptionsController(),
+                                LibraryController()]
+        home.selectedViewController = first
+        setupTabBarItems()
+        
+        Auth.auth().signIn(withEmail: "ssaimadhukarsomu@gmail.com", password: "12345678") { (user, err) in
+            if err != nil {
+                
+                let alert = MyAlertController(title: "Error Connecting", message: "Please Check Your Internet Connection", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+                alert.addAction(ok)
+                self.home.present(alert, animated: true, completion: nil)
+            }
+            print("successfully signed In")
+            
+        }
+    
+        
+        //status bar background
+//        let statusView = UIView(frame: CGRect(x: 0, y: 0, width: (window?.bounds.width)!, height: 20))
+//        statusView.tintColor = UIColor.white
+//        statusView.backgroundColor = UIColor(red: 255.0/255.0, green: 9.0/255.0, blue: 29.0/255.0, alpha: 1.0)
+//        window?.addSubview(statusView)
+//        
+       
+
+        
         return true
     }
+    
+    func setupTabBarItems()
+    {
+        
+        let homeItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "home"), tag: 0)
+        let libraryItem = UITabBarItem(title: "Library", image:#imageLiteral(resourceName: "library"), tag: 3)
+        let trendingItem = UITabBarItem(title: "Trending", image: #imageLiteral(resourceName: "trending"), tag: 1)
+        let subscriptionItem = UITabBarItem(title: "Subscription", image: #imageLiteral(resourceName: "subscriptions"), tag: 2)
+        
+        var TabItems : [UITabBarItem] = [homeItem,trendingItem,subscriptionItem,libraryItem]
+        home.tabBar.itemPositioning = .centered
+        home.tabBar.sizeThatFits(CGSize(width: 28, height: 28))
+        var index = 0
+        for tabViews in home.viewControllers! {
+            
+            tabViews.tabBarItem = TabItems[index]
+            
+            index += 1
+        }
+        home.tabBar.itemWidth = (home.tabBar.bounds.width / 5)
+        home.tabBar.itemSpacing = (home.tabBar.bounds.width / 5) / 4
+        home.tabBar.tintColor = .red
+        home.tabBar.isTranslucent = true
+        UIApplication.shared.statusBarStyle = .lightContent
+
+        
+        
+      
+        
+    }
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
