@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         nav.navigationBar.barTintColor = UIColor.red
         nav.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : UIColor.white
+            NSAttributedStringKey.foregroundColor.rawValue : UIColor.white
         ]
         let first = HomeController()
         home.viewControllers = [first,
@@ -55,11 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let ok = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
                 alert.addAction(ok)
                 self.home.present(alert, animated: true, completion: nil)
+                return
             }
             print("successfully signed In")
+            let FIRDatabase = Database.database().reference()
+            let _ = Data(DRef: FIRDatabase)
             
         }
-    
+        
+       
         
         //status bar background
 //        let statusView = UIView(frame: CGRect(x: 0, y: 0, width: (window?.bounds.width)!, height: 20))

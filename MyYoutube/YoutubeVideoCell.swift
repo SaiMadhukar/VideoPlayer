@@ -65,7 +65,7 @@ internal class YoutubeVideoCell: UICollectionViewCell {
         cl.backgroundColor = UIColor.white
         cl.font  = UIFont(name: "HelveticaNeue-Thin", size: 14)
         cl.textColor = UIColor.lightGray
-        cl.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightLight)
+        cl.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
         cl.translatesAutoresizingMaskIntoConstraints = false
         return cl
     }()

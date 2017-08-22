@@ -21,9 +21,9 @@ class TrendingController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func swipeDown()
+    @objc func swipeDown()
     {
-        print("Hello Do you want a loading wheel right?")
+        print("Hey,you want a loading wheel right?")
        
         let activity = UIActivityIndicatorView(activityIndicatorStyle: .white)
         activity.frame = CGRect(x: 0, y: 50, width: view.bounds.width, height: 100)

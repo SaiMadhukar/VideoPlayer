@@ -24,7 +24,6 @@ class VideoPlayerObject : NSObject {
         
         if let keyWindow = UIApplication.shared.keyWindow  {
             
-            
             video.backgroundColor = .clear
             video.frame = keyWindow.bounds
             keyWindow.addSubview(video)

@@ -10,9 +10,13 @@ import UIKit
 import FirebaseAuth
 import FirebaseStorage
 import AVFoundation
+import FirebaseDatabase
 import AVKit
 
 class HomeController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
+    
+    
+    let FIRDatabase = Database.database().reference()
 
 
     func getDirectoryPath() -> String {
@@ -52,6 +56,9 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
         videosCollection.contentInset = UIEdgeInsetsMake(0, 0, 46, 0)
         view.backgroundColor = .white
         
+        
+        
+        
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -88,7 +95,7 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     
-    func downloadBtnPressed(_ sender : UIButton)
+    @objc func downloadBtnPressed(_ sender : UIButton)
     {
     
         let touchPoint = sender.convert(CGPoint.zero, to: videosCollection)
