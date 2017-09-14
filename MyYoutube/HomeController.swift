@@ -15,6 +15,7 @@ import AVKit
 
 class HomeController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
     
+    var nav : UINavigationController?
     
     let FIRDatabase = Database.database().reference()
 
@@ -48,18 +49,27 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = false
         
-        title = "Home"
         videosCollection.register(YoutubeVideoCell.self, forCellWithReuseIdentifier: "videos")
         view.addSubview(videosCollection)
         videosCollection.frame = view.bounds
         videosCollection.contentInset = UIEdgeInsetsMake(0, 0, 46, 0)
         view.backgroundColor = .white
         
-        
-        
-        
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+      
+    }
+   
+    
+ 
+    
+    
+    
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 9

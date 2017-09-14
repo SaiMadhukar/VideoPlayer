@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array>
+		<string>MKDirectionsModePlane</string>
+		<string>MKDirectionsModePedestrian</string>
+		<string>MKDirectionsModeBus</string>
+		<string>MKDirectionsModeCar</string>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>test</string>
+	<key>NSLocationUsageDescription</key>
+	<string>test</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>test</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>test</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

@@ -24,7 +24,7 @@ internal class YoutubeVideoCell: UICollectionViewCell {
         
         let sv = UIView()
         sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.backgroundColor = UIColor(colorLiteralRed: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        sv.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         
         return sv
     }()

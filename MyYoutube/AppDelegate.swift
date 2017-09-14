@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import  Firebase
+import Firebase
 import FirebaseAuth
 
 @UIApplicationMain
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         nav.navigationBar.barTintColor = UIColor.red
         nav.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor.rawValue : UIColor.white
+            NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue) : UIColor.white
         ]
         let first = HomeController()
         home.viewControllers = [first,
